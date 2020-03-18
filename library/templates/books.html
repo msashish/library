@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Books Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}"/>
+</head>
+<h1>Books Catalogue</h1>
+<br>
+<a href="{{url_for('new_book')}}">
+       <button>Add Book</button>
+</a>
+<br>
+
+<div class="container-fluid text-center top-container">
+    <img src="{{url_for('static', filename='images/book_shelf.jpeg')}}">
+</div>
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Book Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for book in books %}
+        <tr>
+            <td scope="row"> {{book.title}} </td>
+            <td> {{book.author}}</td>
+            <td> {{book.genre}}</td>
+            <td>
+                <a href="{{url_for('edit_book', book_id = book.id )}}"> Edit </a>
+                <a href="{{url_for('delete_book', book_id = book.id )}}" style="margin-left: 10px;">Delete</a>
+            </td>
+        </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</html>
