@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import create_engine
 
 from library import app
-from library.models import Book, Base
+from library.models import Book, Base, Author
 
 # create a session instance for writing and reading from database
 print("Inside routes")
@@ -18,6 +18,8 @@ session = scoped_session(sessionmaker(bind=engine))
 @app.route('/books')
 def show_books():
     books = session.query(Book).all()
+    #a = session.query(Author).all()
+    print(Author.books)
     return render_template("books.html", books=books)
 
 

@@ -2,3 +2,4 @@ __pycache__/
 .DS_Store
 .idea/
 library.egg-info/
+books-collection.db
